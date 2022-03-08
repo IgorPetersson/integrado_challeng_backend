@@ -110,7 +110,7 @@ git clone https://github.com/IgorPetersson/integrado_challeng_backend.git
 Depois disso, digite <em>yarn</em> (ou <em>yarn install</em>) para instalar todas as dependências:
 
 ```bash
-yarn
+npm install
 ```
 
 Também é preciso criar um `.env` com as informações do banco de dados e outras informações necessárias conforme o `.env.example`.
@@ -118,13 +118,13 @@ Também é preciso criar um `.env` com as informações do banco de dados e outr
 Para popular o banco de dados, digite em seu terminal:
 
 ```bash
-yarn population
+npm run population
 ```
 
 Para iniciar a aplicação em sua máquina local, digite em seu terminal:
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ### <h2> 🛠 Tecnologias </h2>
