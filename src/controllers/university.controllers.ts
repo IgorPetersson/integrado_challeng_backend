@@ -1,7 +1,14 @@
 import { Response, Request, NextFunction } from "express";
+import { createUniversityService} from "../services/university.service";
 
 export const createUniversity = async (req: Request, res: Response, next: NextFunction) => {
-    res.send("OK")
+    try{
+        const data = req.body
+        const university = await createUniversityService(data)
+        res.send({data: university})
+    }catch(err){
+        next(err)
+    }  
 }
 
 export const listUniversity = async (req: Request, res: Response,  next: NextFunction) => {
