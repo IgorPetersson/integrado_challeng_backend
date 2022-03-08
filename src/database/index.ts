@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const connectDatabase = () => {
-    mongoose.connect(`mongodb://${process.env.HOST}/${process.env.DATABASE}`).then(() => {
+    mongoose.connect(`mongodb://localhost/${process.env.DATABASE}`).then(() => {
         console.log('Connect Database!')
     }).catch((err: any) => console.log(err))
 }
