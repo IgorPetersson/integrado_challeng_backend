@@ -1,5 +1,6 @@
 import { Response, Request, NextFunction } from "express";
-import { createUniversityService, listUniversityService} from "../services/university.service";
+import University from "../models/university";
+import { createUniversityService, listUniversityService, updateUniversityService} from "../services/university.service";
 
 export const createUniversity = async (req: Request, res: Response, next: NextFunction) => {
     try{
@@ -26,7 +27,15 @@ export const getOneUniversity = async (req: Request, res: Response,  next: NextF
 }
 
 export const updateUniversity = async (req: Request, res: Response,  next: NextFunction) => {
-    res.send("OK")
+    try{
+        const {id} = req.params
+        const data = req.body
+        await updateUniversityService(id, data)
+        const universityUpdated = await University.findOne({__id: id})
+        res.send({data: universityUpdated})  
+    }catch(err){
+        next(err)
+    }
 }
 
 export const deletUniversity = async (req: Request, res: Response,  next: NextFunction) => {

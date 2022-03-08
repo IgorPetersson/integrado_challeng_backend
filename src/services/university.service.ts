@@ -69,3 +69,7 @@ export const listUniversityService = async (queryParams: any) => {
 
     return universitiesShow;
 }
+
+export const updateUniversityService = async (id: string, data: any) => {
+    await University.updateOne({_id: id}, data)
+}
