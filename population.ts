@@ -3,9 +3,13 @@ import axios from "axios"
 import mongoose from "mongoose"
 import University from "./src/models/university"
 
+import dotenv from "dotenv"
+
+dotenv.config()
+
 const population = async () => {
 
-        mongoose.connect('mongodb://localhost/integrado_database')
+        mongoose.connect(`mongodb://localhost/${process.env.DATABASE}`)
         const countrys = [
             "argentina",
             "brazil",
