@@ -1,4 +1,6 @@
 import University from "../models/university"
+import { ErrorHandler } from "../utils/error"
+import { transformTitle } from "../utils/transform"
 
 interface ICreate{
     alpha_two_code: string,
@@ -26,4 +28,44 @@ export const createUniversityService = async (data: ICreate) => {
 
     return universityShow
     
+}
+
+export const listUniversityService = async (queryParams: any) => {
+    
+    let page: number = parseInt(queryParams.page) || 1
+    const country = queryParams.country
+    
+    let universities = await University.find()
+
+    if(country){
+        let titleCountry = transformTitle(country)
+        universities = universities.filter((university: any) => university.country == titleCountry)
+    }
+    
+    let finish = page*20
+    let start = (page*20) - 20
+
+    if((page-1)*20 > universities.length || universities.length == 0){
+        throw(new ErrorHandler(404, "page not found"))
+    }
+
+    if(page*20 > universities.length){
+        finish = universities.length
+    }
+
+    const universitiesShow = []
+
+    for(let i = start; i < finish; i++){
+        
+        const universityShow = {
+            _id: universities[i]._id,
+            alpha_two_code: universities[i].alpha_two_code,
+            name: universities[i].name,
+            country: universities[i].country,
+        }
+        
+        universitiesShow.push(universityShow)
+    }
+
+    return universitiesShow;
 }
