@@ -37,6 +37,10 @@ export const listUniversityService = async (queryParams: any) => {
     
     let universities = await University.find()
 
+    if(universities.length == 0){
+        return []
+    }
+
     if(country){
         let titleCountry = transformTitle(country)
         universities = universities.filter((university: any) => university.country == titleCountry)
@@ -82,7 +86,7 @@ export const getOneUniversityService = async (id: string) => {
     const university = await University.findOne({_id: id})
     
     const universityShow = {
-        __id: university._id,
+        _id: university._id,
         alpha_two_code: university.alpha_two_code,
         name: university.name,
         country: university.country,

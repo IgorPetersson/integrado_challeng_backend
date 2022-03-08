@@ -5,7 +5,7 @@ export const createUniversity = async (req: Request, res: Response, next: NextFu
     try{
         const data = req.body
         const university = await createUniversityService(data)
-        res.send({data: university})
+        res.status(201).send(university)
     }catch(err){
         next(err)
     }  
@@ -15,7 +15,7 @@ export const listUniversity = async (req: Request, res: Response,  next: NextFun
     try{
         const queryParams = req.query
         const universities = await listUniversityService(queryParams)
-        res.send({data: universities})
+        res.send(universities)
     }catch(err){
         next(err)
     }
@@ -25,7 +25,7 @@ export const getOneUniversity = async (req: Request, res: Response,  next: NextF
     try{
         const {id} = req.params
         const university = await getOneUniversityService(id)
-        res.send({data: university})
+        res.send(university)
     }catch(err){
         next(err)
     } 
@@ -37,7 +37,7 @@ export const updateUniversity = async (req: Request, res: Response,  next: NextF
         const data = req.body
         await updateUniversityService(id, data)
         const universityUpdated = await  getOneUniversityService(id)
-        res.send({data: universityUpdated})  
+        res.send(universityUpdated)  
     }catch(err){
         next(err)
     }
@@ -47,7 +47,7 @@ export const deleteUniversity = async (req: Request, res: Response,  next: NextF
     try{
         const {id} = req.params
         await deleteUniversityService(id)
-        res.send({data: "university deleted"})
+        res.status(204).send()
     }catch(err){
         next(err)
     }    

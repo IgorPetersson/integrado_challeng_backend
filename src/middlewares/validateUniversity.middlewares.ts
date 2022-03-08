@@ -42,7 +42,7 @@ export const  validateCreateUniversity = (req: Request, res: Response, next: Nex
     }
 
     for(let i = 0; i < arrKeys.length; i++){
-        if(typeof data[arrKeys[i]] != 'object'){
+        if(Array.isArray(data[arrKeys[i]]) == false){
             arrKeysMissing.push(arrKeys[i])
         }
     }
@@ -96,7 +96,6 @@ export const  validateUpdateUniversity = async (req: Request, res: Response, nex
     if(Object.keys(data).includes("domains") == true){
 
         if(Array.isArray(data["domains"]) == false){
-            console.log("sdsd")
             next(new ErrorHandler(400, "an array must be provided for the domains field"))
         }
     }
