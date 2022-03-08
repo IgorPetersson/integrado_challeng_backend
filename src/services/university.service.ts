@@ -73,3 +73,24 @@ export const listUniversityService = async (queryParams: any) => {
 export const updateUniversityService = async (id: string, data: any) => {
     await University.updateOne({_id: id}, data)
 }
+
+export const deleteUniversityService = async (id: string) => {
+    await University.deleteOne({_id: id})
+}
+
+export const getOneUniversityService = async (id: string) => {
+    const university = await University.findOne({_id: id})
+    
+    const universityShow = {
+        __id: university._id,
+        alpha_two_code: university.alpha_two_code,
+        name: university.name,
+        country: university.country,
+        "state-province": university["state-province"],
+        domains: university.domains,
+        web_pages: university.web_pages
+    }
+
+    return universityShow
+
+}

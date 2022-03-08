@@ -1,6 +1,5 @@
 import { Response, Request, NextFunction } from "express";
-import University from "../models/university";
-import { createUniversityService, listUniversityService, updateUniversityService} from "../services/university.service";
+import { createUniversityService, listUniversityService, updateUniversityService, deleteUniversityService, getOneUniversityService} from "../services/university.service";
 
 export const createUniversity = async (req: Request, res: Response, next: NextFunction) => {
     try{
@@ -23,7 +22,13 @@ export const listUniversity = async (req: Request, res: Response,  next: NextFun
 }
 
 export const getOneUniversity = async (req: Request, res: Response,  next: NextFunction) => {
-    res.send("OK")
+    try{
+        const {id} = req.params
+        const university = await getOneUniversityService(id)
+        res.send({data: university})
+    }catch(err){
+        next(err)
+    } 
 }
 
 export const updateUniversity = async (req: Request, res: Response,  next: NextFunction) => {
@@ -31,13 +36,20 @@ export const updateUniversity = async (req: Request, res: Response,  next: NextF
         const {id} = req.params
         const data = req.body
         await updateUniversityService(id, data)
-        const universityUpdated = await University.findOne({__id: id})
+        const universityUpdated = await  getOneUniversityService(id)
         res.send({data: universityUpdated})  
     }catch(err){
         next(err)
     }
 }
 
-export const deletUniversity = async (req: Request, res: Response,  next: NextFunction) => {
-    res.send("OK")
+export const deleteUniversity = async (req: Request, res: Response,  next: NextFunction) => {
+    try{
+        const {id} = req.params
+        await deleteUniversityService(id)
+        res.send({data: "university deleted"})
+    }catch(err){
+        next(err)
+    }    
 }
+
