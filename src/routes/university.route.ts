@@ -7,7 +7,7 @@ const route = Router();
 export const universityRoute = (app: Express) => {
     route.post("",validateCreateUniversity, universityExists, createUniversity)
     route.get("", listUniversity)
-    route.get("/:id", getOneUniversity)
+    route.get("/:id",universityNotFound, getOneUniversity)
     route.put("/:id",universityNotFound, validateUpdateUniversity, updateUniversity)
     route.delete("/:id",universityNotFound, deleteUniversity)
     app.use("/universities", route)
