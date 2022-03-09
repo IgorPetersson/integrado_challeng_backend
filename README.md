@@ -1,7 +1,7 @@
 <h1 align="center" id="top">Integrado backend</span></h1>
 <p align="center">
 <h3 align="left">
-<span style="color:#10BEF5"><em>Integrado backend</em></span> é uma aplicação utilizada para cadastrar e encontrar universidades na américa do sul.
+<span style="color:#10BEF5"><em>Integrado backend</em></span> é uma aplicação utilizada para cadastrar e encontrar universidades na América do Sul.
 </h3>
 
 ## 🕹 Features
@@ -53,7 +53,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 - [NodeJs](https://nodejs.org/en/)
 - [MongoDb](https://www.mongodb.com/)
 
-E uma ferramenta operar a aplicação, sugeriro o 
+E uma ferramenta operar a aplicação, sugiro o 
 [VSCode](https://code.visualstudio.com/).
 
 ## 📦 Requerimentos
@@ -107,7 +107,7 @@ Começe clonando o repositório usando git clone:
 git clone https://github.com/IgorPetersson/integrado_challeng_backend.git
 ```
 
-Depois disso, digite <em>yarn</em> (ou <em>yarn install</em>) para instalar todas as dependências:
+Depois disso, digite <em>npm install</em> para instalar todas as dependências:
 
 ```bash
 npm install
