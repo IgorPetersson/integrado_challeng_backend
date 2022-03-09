@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.validateUpdateUniversity = exports.universityNotFound = exports.universityExists = exports.validateCreateUniversity = void 0;
+const validateUniversity_middlewares_1 = require("./validateUniversity.middlewares");
+Object.defineProperty(exports, "validateCreateUniversity", { enumerable: true, get: function () { return validateUniversity_middlewares_1.validateCreateUniversity; } });
+Object.defineProperty(exports, "validateUpdateUniversity", { enumerable: true, get: function () { return validateUniversity_middlewares_1.validateUpdateUniversity; } });
+const universityExists_middleware_1 = require("./universityExists.middleware");
+Object.defineProperty(exports, "universityExists", { enumerable: true, get: function () { return universityExists_middleware_1.universityExists; } });
+const universityNotFound_middleware_1 = require("./universityNotFound.middleware");
+Object.defineProperty(exports, "universityNotFound", { enumerable: true, get: function () { return universityNotFound_middleware_1.universityNotFound; } });
