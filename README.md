@@ -113,7 +113,7 @@ Depois disso, digite <em>npm install</em> para instalar todas as dependências:
 npm install
 ```
 
-Também é preciso criar um `.env` com as informações do banco de dados e outras informações necessárias conforme o `.env.example`.
+Também é preciso criar um arquivo chamado`.env` com as informações do banco de dados, conforme o `.env.example`.
 
 Para popular o banco de dados, digite em seu terminal:
 
